@@ -9,8 +9,8 @@ namespace ticket
             // Modello Dati
             char sel;
             int n, tot = 0;
-            decimal p = 0m;
-
+            decimal p = 0m, prezzo_unitario;
+            const decimal BAMBINI=6.5m;
             // Elaborazione
             do
             {
@@ -18,33 +18,9 @@ namespace ticket
                 sel = char.Parse(Console.ReadLine());
                 switch (sel)
                 {
-                    case 'B':
-                        Console.WriteLine("\nInserisci il numero di Bambini di cui desideri comprare il/i biglietto/i:");
-                        n = int.Parse(Console.ReadLine());
-                        tot += n;
-                        p += n * 6.5m;
-                        break;
+                    case 'B': prezzo_unitario = BAMBINI; break;
 
-                    case 'A':
-                        Console.WriteLine("\nInserisci il numero di Anziani di cui desideri comprare il/i biglietto/i:");
-                        n = int.Parse(Console.ReadLine());
-                        tot += n;
-                        p += n * 5.9m;
-                        break;
-
-                    case 'S':
-                        Console.WriteLine("\nInserisci il numero di Studenti di cui desideri comprare il/i biglietto/i:");
-                        n = int.Parse(Console.ReadLine());
-                        tot += n;
-                        p += n * 5.7m;
-                        break;
                     
-                    case 'O':
-                        Console.WriteLine("\nInserisci il numero di Altri di cui desideri comprare il/i biglietto/i:");
-                        n = int.Parse(Console.ReadLine());
-                        tot += n;
-                        p += n * 5.7m;
-                        break;
 
                     case 'R':
                         Console.WriteLine($"\nIl Conto al momento ammonta a: {p} con {tot} biglietti");
@@ -58,6 +34,10 @@ namespace ticket
                         Console.WriteLine("Non capisco il carattere che hai inserito, Ritenta:");
                         break;
                 }
+                 Console.WriteLine("\nInserisci il numero di Bambini di cui desideri comprare il/i biglietto/i:");
+                 n = int.Parse(Console.ReadLine());
+                 tot += n;
+                 p += n * prezzo_unitario;
             } while (!(sel.Equals('F')));
 
 
